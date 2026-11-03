@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="km">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kan Coffee - ហាងកាហ្វេថ្មី</title>
+    <link rel="stylesheet" href="kancoffee.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <i class="fas fa-mug-hot"></i>
+          <h1>Kan Coffee</h1>
+        </div>
+        <div class="nav-right">
+          <div class="user-section" id="userSection">
+            <!-- Login/Register buttons (shown when logged out) -->
+            <div class="auth-buttons" id="authButtons">
+              <button class="btn btn-outline" id="loginBtn">
+                <i class="fas fa-sign-in-alt"></i> ចូល
+              </button>
+              <button class="btn btn-primary" id="registerBtn">
+                <i class="fas fa-user-plus"></i> ចុះឈ្មោះ
+              </button>
+            </div>
+
+            <!-- User info (shown when logged in) -->
+            <div class="user-info" id="userInfo" style="display: none">
+              <span class="username" id="username">អ្នកប្រើប្រាស់</span>
+              <button class="btn btn-logout" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> ចាកចេញ
+              </button>
+            </div>
+          </div>
+
+          <!-- Cart -->
+          <div class="cart-icon">
+            <button class="btn-cart" id="cartBtn">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-content">
+        <h2>ស្វាគមន៍មកកាន់ Kan Coffee</h2>
+        <p>កាហ្វេថ្នាក់ពិភពលោក ដែលមកពីកម្ពុជា</p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary" id="viewMenuBtn">
+            <i class="fas fa-list"></i> មើលម៉ឺនុយ
+          </button>
+          <button class="btn btn-outline" id="orderNowBtn">
+            <i class="fas fa-shopping-bag"></i> បញ្ជាទិញឥឡូវ
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Contact Info -->
+      <section class="contact-info">
+        <div class="container">
+          <div class="contact-grid">
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <h3>ទូរស័ព្ទកម្មង់</h3>
+                <p>កុំភ្លេចខលមកបងពេលគេបោះបង់អូន!</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-clock"></i>
+              <div>
+                <h3>ម៉ោងធ្វើការ</h3>
+                <p>ច័ន្ទ-សៅរ៍: 7:00 - 21:00<br />អាទិត្យ: 8:00 - 20:00</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h3>ទីតាំង</h3>
+                <p>កន្លែងដែលមានមនុស្សផឺក</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Menu Section -->
+      <section class="menu-section" id="menuSection">
+        <div class="container">
+          <div class="section-header">
+            <h2><i class="fas fa-coffee"></i> ម៉ឺនុយកាហ្វេ</h2>
+            <p class="section-subtitle">ជ្រើសរើសកាហ្វេដែលអ្នកចូលចិត្ត</p>
+          </div>
+
+          <!-- Order Notice -->
+          <div class="order-notice" id="orderNotice">
+            <i class="fas fa-info-circle"></i>
+            <p>សូមចូលគណនីដើម្បីអាចបញ្ជាទិញបាន</p>
+          </div>
+
+          <!-- Category Filters -->
+          <div class="category-filters">
+            <button class="filter-btn active" data-category="all">
+              ទាំងអស់
+            </button>
+            <button class="filter-btn" data-category="hot-coffee">
+              ☕ កាហ្វេក្តៅ
+            </button>
+            <button class="filter-btn" data-category="iced-coffee">
+              🧊 កាហ្វេអ៊ីស
+            </button>
+            <button class="filter-btn" data-category="food">🍴 អាហារ</button>
+            <button class="filter-btn" data-category="frappe">
+              🍧 ហ្វ្រាប
+            </button>
+          </div>
+
+          <!-- Menu Items -->
+          <div class="menu-items" id="menuItems">
+            <!-- Menu items will be loaded by JavaScript -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Kan Coffee</h3>
+            <p>កាហ្វេល្អៗពីកម្ពុជា</p>
+            <p>បង្កើតឡើងដោយស្នេហាកាហ្វេ</p>
+          </div>
+          <div class="footer-section">
+            <h3>ទំនាក់ទំនង</h3>
+            <p><i class="fas fa-phone"></i> 012 345 678</p>
+            <p><i class="fas fa-envelope"></i> info@kancoffee.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> ភ្នំពេញ, កម្ពុជា</p>
+          </div>
+          <div class="footer-section">
+            <h3>ផលិតផល</h3>
+            <ul>
+              <li>កាហ្វេក្តៅ</li>
+              <li>កាហ្វេអ៊ីស</li>
+              <li>ភេសជ្ជៈផ្សេងៗ</li>
+              <li>អាហារសម្រន់</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Kan Coffee. រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modals -->
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-sign-in-alt"></i> ចូលគណនី</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="form-group">
+              <label for="email"><i class="fas fa-envelope"></i> អ៊ីមែល</label>
+              <input
+                type="email"
+                id="loginEmail"
+                placeholder="បញ្ចូលអ៊ីមែលរបស់អ្នក"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password"
+                ><i class="fas fa-lock"></i> លេខសម្ងាត់</label
+              >
+              <input
+                type="password"
+                id="loginPassword"
+                placeholder="បញ្ចូលលេខសម្ងាត់"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fas fa-sign-in-alt"></i> ចូលគណនី
+            </button>
+          </form>
+          <div class="modal-footer">
+            <p>
+              មិនទាន់មានគណនីទេ? <a href="#" id="showRegister">ចុះឈ្មោះថ្មី</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-user-plus"></i> ចុះឈ្មោះគណនី</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="registerForm">
+            <div class="form-group">
+              <label for="name"><i class="fas fa-user"></i> ឈ្មោះពេញ</label>
+              <input
+                type="text"
+                id="registerName"
+                placeholder="បញ្ចូលឈ្មោះពេញ"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email"><i class="fas fa-envelope"></i> អ៊ីមែល</label>
+              <input
+                type="email"
+                id="registerEmail"
+                placeholder="បញ្ចូលអ៊ីមែល"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="phone"
+                ><i class="fas fa-phone"></i> លេខទូរស័ព្ទ</label
+              >
+              <input
+                type="tel"
+                id="registerPhone"
+                placeholder="បញ្ចូលលេខទូរស័ព្ទ"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password"
+                ><i class="fas fa-lock"></i> លេខសម្ងាត់</label
+              >
+              <input
+                type="password"
+                id="registerPassword"
+                placeholder="បង្កើតលេខសម្ងាត់"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword"
+                ><i class="fas fa-lock"></i> បញ្ជាក់លេខសម្ងាត់</label
+              >
+              <input
+                type="password"
+                id="registerConfirmPassword"
+                placeholder="បញ្ចូលលេខសម្ងាត់ម្តងទៀត"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fas fa-user-plus"></i> ចុះឈ្មោះ
+            </button>
+          </form>
+          <div class="modal-footer">
+            <p>មានគណនីរួចហើយ? <a href="#" id="showLogin">ចូលគណនី</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+      <!-- Inside cart modal -->
+      <div class="cart-actions">
+        <button class="btn btn-outline" id="clearCartBtn" onclick="clearCart()">
+          <i class="fas fa-trash"></i> សម្អាតរទេះ
+        </button>
+        <button
+          class="btn btn-primary"
+          id="checkoutBtn"
+          onclick="handleCheckoutClick()"
+        >
+          <i class="fas fa-check"></i> បញ្ជាទិញ
+        </button>
+      </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-shopping-cart"></i> រទេះទិញ</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="cart-items" id="cartItemsContainer">
+            <!-- Cart items will be loaded here -->
+          </div>
+          <div class="cart-summary" id="cartSummary" style="display: none">
+            <div class="summary-row">
+              <span>សរុបទំនិញ:</span>
+              <span id="cartTotalItems">0 ធាតុ</span>
+            </div>
+            <div class="summary-row">
+              <span>តម្លៃសរុប:</span>
+              <span id="cartTotalPrice">0៛</span>
+            </div>
+            <div class="summary-row total">
+              <span>ត្រូវបង់:</span>
+              <span id="cartGrandTotal">0៛</span>
+            </div>
+            <div class="cart-actions">
+              <button class="btn btn-outline" id="clearCartBtn">
+                <i class="fas fa-trash"></i> សម្អាតរទេះ
+              </button>
+              <button class="btn btn-primary" id="checkoutBtn">
+                <i class="fas fa-check"></i> បញ្ជាទិញ
+              </button>
+            </div>
+          </div>
+          <div class="empty-cart" id="emptyCart">
+            <i class="fas fa-shopping-cart fa-3x"></i>
+            <p>រទេះទិញទទេ</p>
+            <p>សូមបន្ថែមទំនិញពីម៉ឺនុយ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-check-circle"></i> បញ្ជាក់ការកម្មង់</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="checkoutForm">
+            <div class="form-group">
+              <label for="checkoutName"
+                ><i class="fas fa-user"></i> ឈ្មោះ</label
+              >
+              <input
+                type="text"
+                id="checkoutName"
+                placeholder="ឈ្មោះអ្នកទទួល"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="checkoutPhone"
+                ><i class="fas fa-phone"></i> លេខទូរស័ព្ទ</label
+              >
+              <input
+                type="tel"
+                id="checkoutPhone"
+                placeholder="លេខទូរស័ព្ទទំនាក់ទំនង"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="checkoutAddress"
+                ><i class="fas fa-map-marker-alt"></i> អាសយដ្ឋាន
+                (បើត្រូវការដឹកជញ្ជូន)</label
+              >
+              <textarea
+                id="checkoutAddress"
+                placeholder="បញ្ចូលអាសយដ្ឋាន"
+                rows="3"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="deliveryMethod"
+                ><i class="fas fa-truck"></i> វិធីទទួល</label
+              >
+              <select id="deliveryMethod">
+                <option value="pickup">ទាញយកនៅហាង</option>
+                <option value="delivery">ដឹកជញ្ជូន (+2,000៛)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="orderNotes"
+                ><i class="fas fa-edit"></i> កំណត់ចំណាំ</label
+              >
+              <textarea
+                id="orderNotes"
+                placeholder="កំណត់ចំណាំបន្ថែម"
+                rows="2"
+              ></textarea>
+            </div>
+
+            <div class="order-summary">
+              <h4><i class="fas fa-receipt"></i> សង្ខេបការកម្មង់</h4>
+              <div id="checkoutOrderSummary">
+                <!-- Order summary will be shown here -->
+              </div>
+            </div>
+
+            <div class="checkout-actions">
+              <button type="button" class="btn btn-outline" id="backToCartBtn">
+                <i class="fas fa-arrow-left"></i> ត្រឡប់ទៅរទេះ
+              </button>
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-check"></i> បញ្ជាក់កម្មង់
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="modal" id="confirmationModal">
+      <div class="modal-content confirmation-modal">
+        <div class="confirmation-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h3>ការកម្មង់ជោគជ័យ!</h3>
+        <p id="confirmationMessage">ការកម្មង់របស់អ្នកត្រូវបានទទួល។</p>
+        <p>លេខកម្មង់: <strong id="orderNumber">KC-20240001</strong></p>
+        <p>យើងនឹងទំនាក់ទំនងទៅកាន់អ្នកឆាប់ៗនេះ។</p>
+        <div class="confirmation-actions">
+          <button class="btn btn-primary" id="closeConfirmationBtn">
+            <i class="fas fa-times"></i> បិទ
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- JavaScript -->
+    <script src="kancoffee.js"></script>
+  </body>
+</html>
